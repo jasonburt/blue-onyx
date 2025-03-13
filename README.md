@@ -61,6 +61,69 @@ docker run -d -p 32168:32168 ghcr.io/xnorpx/blue_onyx:latest --log-level debug -
 
 If you run outside of docker you need to install OpenSSL 3
 
+## Installation on Mac ARM (M1/M2) Architecture
+
+### Prerequisites
+
+1. Install Rust for ARM architecture:
+```bash
+# Install Rust using rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Ensure you have the ARM64 target
+rustup target add aarch64-apple-darwin
+```
+
+2. Install required dependencies:
+```bash
+# Install OpenSSL (required for building)
+brew install openssl
+
+# Install additional system dependencies
+brew install cmake
+```
+
+### Compiling Blue Onyx
+
+1. Clone the repository:
+```bash
+git clone https://github.com/xnorpx/blue-onyx.git
+cd blue-onyx
+```
+
+2. Set environment variables for OpenSSL (important for ARM Macs):
+```bash
+export OPENSSL_DIR=$(brew --prefix openssl)
+export OPENSSL_INCLUDE_DIR=$OPENSSL_DIR/include
+export OPENSSL_LIB_DIR=$OPENSSL_DIR/lib
+```
+
+3. Build the project:
+```bash
+# For debug build
+cargo build
+
+# For release build (recommended)
+cargo build --release
+```
+
+### Running Blue Onyx
+
+After compilation, you can run the binary:
+```bash
+# Debug build
+./target/debug/blue-onyx
+
+# Release build
+./target/release/blue-onyx
+```
+
+### Notes for Mac ARM Users
+
+- Ensure you're using the latest version of Rust
+- Some dependencies might require additional configuration for ARM architecture
+- If you encounter any build issues, check the project's GitHub issues or open a new issue
+
 ## Tips
 
 Help:
