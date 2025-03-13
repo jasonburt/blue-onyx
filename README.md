@@ -85,6 +85,31 @@ brew install cmake
 
 ### Compiling Blue Onyx
 
+#### Quick Setup (Recommended)
+
+For Mac ARM users, we provide a convenient setup script that automates the entire installation process:
+
+```bash
+# Download the setup script
+curl -O https://raw.githubusercontent.com/xnorpx/blue-onyx/mac-arm-documentation/setup_mac_arm.sh
+
+# Make the script executable
+chmod +x setup_mac_arm.sh
+
+# Run the setup script
+./setup_mac_arm.sh
+```
+
+The script will:
+- Check system architecture
+- Install Homebrew
+- Install required dependencies
+- Install Rust
+- Clone the Blue Onyx repository
+- Build the project
+
+#### Manual Setup
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/xnorpx/blue-onyx.git
