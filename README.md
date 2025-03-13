@@ -139,15 +139,56 @@ After compilation, you can run the binary:
 # Debug build
 ./target/debug/blue-onyx
 
-# Release build
+# Release build (recommended)
 ./target/release/blue-onyx
 ```
 
-### Notes for Mac ARM Users
+### Testing Your Blue Onyx Installation
+
+#### Basic Service Test
+```bash
+# Start the service
+./target/release/blue-onyx
+
+# In another terminal, verify the service is running
+curl http://localhost:32168
+```
+
+#### Comprehensive Test Script
+We've included a test script to help you verify your installation:
+
+```bash
+# Download the test script
+curl -O https://raw.githubusercontent.com/xnorpx/blue-onyx/mac-arm-documentation/test_blue_onyx.sh
+
+# Make the script executable
+chmod +x test_blue_onyx.sh
+
+# Run the test script
+./test_blue_onyx.sh
+```
+
+### Troubleshooting Mac ARM Installation
 
 - Ensure you're using the latest version of Rust
 - Some dependencies might require additional configuration for ARM architecture
-- If you encounter any build issues, check the project's GitHub issues or open a new issue
+- If you encounter build issues:
+  1. Update Rust: `rustup update`
+  2. Verify OpenSSL configuration
+  3. Check project GitHub issues
+  4. Open a new issue with detailed error logs
+
+### Common Commands
+
+Help:
+```bash
+./target/release/blue-onyx --help
+```
+
+Download models:
+```bash
+./target/release/blue-onyx --download-model-path .
+```
 
 ## Tips
 
